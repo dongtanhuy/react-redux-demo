@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React  from 'react';
+import { increase, decrease } from '../redux/actions'
+import { connect } from 'react-redux';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const decrease = () => setCount(count - 1)
-  const increase = () => setCount(count + 1)
+const Counter = ({
+  count,
+  increase,
+  decrease
+}) => {
   return (
     <div className="counter">
       <h1 className="counter-title">Counter</h1>
@@ -16,5 +18,12 @@ const Counter = () => {
     </div>
   )
 }
+const mapStateToProps = state => ({
+  count: state.count
+});
 
-export default Counter;
+const mapDispatchToProps = dispatch => ({
+  increase: () => dispatch(increase()),
+  decrease: () => dispatch(decrease()),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
