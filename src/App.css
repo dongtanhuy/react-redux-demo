@@ -20,3 +20,19 @@
 .App-link {
   color: #09d3ac;
 }
+.counter {
+  margin: 10px auto;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.counter-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  margin: 5px;
+  font-size: 14px;
+}
