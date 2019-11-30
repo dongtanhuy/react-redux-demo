@@ -1,12 +1,11 @@
 import React  from 'react';
-import { increase, decrease } from '../redux/actions'
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 
-const Counter = ({
-  count,
-  increase,
-  decrease
-}) => {
+const Counter = () => {
+  const count = useSelector(state => state.count)
+  const dispatch = useDispatch()
+  const increase = () => dispatch({ type: 'INCREASE'})
+  const decrease = () => dispatch({ type: 'DECREASE'})
   return (
     <div className="counter">
       <h1 className="counter-title">Counter</h1>
@@ -18,12 +17,5 @@ const Counter = ({
     </div>
   )
 }
-const mapStateToProps = state => ({
-  count: state.count
-});
 
-const mapDispatchToProps = dispatch => ({
-  increase: () => dispatch(increase()),
-  decrease: () => dispatch(decrease()),
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default (Counter);
